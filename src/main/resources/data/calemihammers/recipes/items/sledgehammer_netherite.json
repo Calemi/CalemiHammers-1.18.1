@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "KXK",
+    " S ",
+    " S "
+  ],
+  "key": {
+
+    "S": {
+      "tag" : "forge:rods/wooden"
+    },
+
+    "K": {
+      "item": "calemihammers:knob_netherite"
+    },
+
+    "X": {
+      "item" : "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "calemihammers:sledgehammer_netherite",
+    "count": 1
+  }
+}

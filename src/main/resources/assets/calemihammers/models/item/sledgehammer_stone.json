@@ -1,0 +1,7 @@
+{
+  "parent": "calemihammers:item/sledgehammer_base",
+  "textures": {
+    "0": "calemihammers:items/sledgehammer_stone",
+    "particle": "calemihammers:items/sledgehammer_stone"
+  }
+}

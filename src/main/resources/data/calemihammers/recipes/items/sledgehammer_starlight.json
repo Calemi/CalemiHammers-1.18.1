@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "KXK",
+    " S ",
+    " S "
+  ],
+  "key": {
+
+    "S": {
+      "item" : "minecraft:iron_ingot"
+    },
+
+    "K": {
+      "item": "calemihammers:knob_starlight"
+    },
+
+    "X": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "calemihammers:sledgehammer_starlight",
+    "count": 1
+  }
+}

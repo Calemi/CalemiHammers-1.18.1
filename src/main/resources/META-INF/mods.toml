@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All rights reserved"
+
+[[mods]]
+modId="calemihammers"
+version="1.0.0"
+displayName="Calemi's Sledgehammers"
+authors="Calemi"
+credits="Calemi - Programmer & Artist"
+description='''
+    This mod adds many different Sledgehammers to the game. Sledgehammers are efficient to every block and can vein mine.
+    '''
+
+[[dependencies.calemihammers]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39.0.9,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.calemihammers]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="1.18.1"
+    ordering="NONE"
+    side="BOTH"

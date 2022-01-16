@@ -1,0 +1,41 @@
+{
+
+  "item.calemihammers.knob_wood": "Wood Knob",
+  "item.calemihammers.knob_stone": "Stone Knob",
+  "item.calemihammers.knob_iron": "Iron Knob",
+  "item.calemihammers.knob_gold": "Gold Knob",
+  "item.calemihammers.knob_diamond": "Diamond Knob",
+  "item.calemihammers.knob_netherite": "Netherite Knob",
+  "item.calemihammers.knob_starlight": "Starlight Knob",
+  "item.calemihammers.sledgehammer_wood": "Wooden Sledgehammer",
+  "item.calemihammers.sledgehammer_stone": "Stone Sledgehammer",
+  "item.calemihammers.sledgehammer_iron": "Iron Sledgehammer",
+  "item.calemihammers.sledgehammer_gold": "Gold Sledgehammer",
+  "item.calemihammers.sledgehammer_diamond": "Diamond Sledgehammer",
+  "item.calemihammers.sledgehammer_netherite": "Netherite Sledgehammer",
+  "item.calemihammers.sledgehammer_starlight": "Starlight Sledgehammer",
+  "ch.lore.sledgehammer": "Need a pickaxe, axe, shovel and sword in one single tool? This is your best bet.",
+  "ch.lore.sledgehammer.use": "Charge",
+  "ch.lore.sledgehammer.sneak-use": "Force Charge",
+  "ch.lore.sledgehammer.release-use": "Excavates, Mines Veins & Fells Trees",
+
+
+  "itemGroup.calemihammers.tabMain": "Calemi's Sledgehammers",
+  "enchantment.calemihammers.crushing": "Crushing",
+  "enchantment.calemihammers.crushing.desc": "Increases the range of the Sledgehammer charge ability.",
+
+
+
+  "lore.key.shift": "Shift",
+  "lore.key.ctrl": "Ctrl",
+  "lore.info": "Info",
+  "lore.controls": "Controls",
+  "lore.recipes": "Recipe",
+  "lore.control_type.use": "Use",
+  "lore.control_type.use-open-hand": "Use-Open-Hand",
+  "lore.control_type.sneak-use": "Sneak-Use",
+  "lore.control_type.sneak-break-block": "Sneak-Break-Block",
+  "lore.control_type.release-use": "Release-Use",
+  "lore.control_type.left-click-block": "Left-Click-Block",
+  "lore.control_type.sneak-left-click-block": "Sneak-Left-Click-Block"
+}
