@@ -15,79 +15,90 @@ import java.util.List;
 public class LoreHelper {
 
     /**
-     * Adds information lore to an Item.
-     * @param tooltip The tooltip list of the Item.
+     * Adds the first information lore to an Item.
+     * This method generates the [Shift] label.
+     * @param tooltipList   The tooltip list of the Item.
      * @param loreComponent The translatable lore component to add.
      */
-    public static void addInformationLore (List<Component> tooltip, MutableComponent loreComponent) {
-        addInformationLore(tooltip, loreComponent, false);
+    public static void addInformationLoreFirst(List<Component> tooltipList, MutableComponent loreComponent) {
+
+        if (!addInformationLore(tooltipList, loreComponent)) {
+            tooltipList.add(loreComponent.withStyle(ChatFormatting.GRAY));
+        } else
+            tooltipList.add(getPlateText("lore.key.shift", ChatFormatting.AQUA).append(" ").append(new TranslatableComponent("lore.info").withStyle(ChatFormatting.GRAY)));
     }
 
     /**
      * Adds information lore to an Item.
-     * @param tooltip The tooltip list of the Item.
+     * @param tooltipList   The tooltip list of the Item.
      * @param loreComponent The translatable lore component to add.
-     * @param isFirst Is this line of information lore the first one.
+     * @return true, if the shift key is down.
      */
-    public static void addInformationLore (List<Component> tooltip, MutableComponent loreComponent, boolean isFirst) {
+    public static boolean addInformationLore(List<Component> tooltipList, MutableComponent loreComponent) {
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(loreComponent.withStyle(ChatFormatting.GRAY));
+            tooltipList.add(loreComponent.withStyle(ChatFormatting.GRAY));
+            return true;
         }
 
-        else if (isFirst) tooltip.add(getPlateText("lore.key.shift", ChatFormatting.AQUA).append(" ").append(new TranslatableComponent("lore.info").withStyle(ChatFormatting.GRAY)));
+        return false;
+    }
+
+    /**
+     * Adds the first control lore to an Item.
+     * This method generates the [Ctrl] label.
+     * @param tooltipList   The tooltip list of the Item.
+     * @param loreComponent The translatable lore component to add.
+     * @param controlType   The type of control.
+     */
+    public static void addControlsLoreFirst(List<Component> tooltipList, MutableComponent loreComponent, ControlType controlType) {
+
+        if (!addControlsLore(tooltipList, loreComponent, controlType)) {
+            tooltipList.add(getPlateText("lore.key.ctrl", ChatFormatting.AQUA).append(" ").append(new TranslatableComponent("lore.controls").withStyle(ChatFormatting.GRAY)));
+        }
     }
 
     /**
      * Adds control lore to an Item.
-     * @param tooltip The tooltip list of the Item.
+     * @param tooltipList   The tooltip list of the Item.
      * @param loreComponent The translatable lore component to add.
-     * @param controlType The type of control.
+     * @param controlType   The type of control.
      */
-    public static void addControlsLore (List<Component> tooltip, MutableComponent loreComponent, ControlType controlType) {
-        addControlsLore(tooltip, loreComponent, controlType, false);
-    }
-
-    /**
-     * Adds control lore to an Item.
-     * @param tooltip The tooltip list of the Item.
-     * @param loreComponent The translatable lore component to add.
-     * @param controlType The type of control.
-     * @param isFirst Is this line of control lore the first one.
-     */
-    public static void addControlsLore (List<Component> tooltip, MutableComponent loreComponent, ControlType controlType, boolean isFirst) {
+    public static boolean addControlsLore(List<Component> tooltipList, MutableComponent loreComponent, ControlType controlType) {
 
         if (Screen.hasControlDown()) {
-            addActionLore(tooltip, loreComponent.withStyle(ChatFormatting.GRAY), controlType);
+            addActionLore(tooltipList, loreComponent.withStyle(ChatFormatting.GRAY), controlType);
+            return true;
         }
 
-        else if (isFirst) tooltip.add(getPlateText("lore.key.ctrl", ChatFormatting.AQUA).append(" ").append(new TranslatableComponent("lore.controls").withStyle(ChatFormatting.GRAY)));
+        return false;
     }
+
 
     /**
      * Helper method to add a control lore line to an Item.
-     * @param tooltip The tooltip list of the Item.
+     * @param tooltipList   The tooltip list of the Item.
      * @param loreComponent The translatable lore component to add.
-     * @param controlType The type of control.
+     * @param controlType   The type of control.
      */
-    private static void addActionLore (List<Component> tooltip, MutableComponent loreComponent, ControlType controlType) {
-        tooltip.add(getPlateText(controlType.getName(), ChatFormatting.YELLOW).append(" ").append(loreComponent));
+    private static void addActionLore(List<Component> tooltipList, MutableComponent loreComponent, ControlType controlType) {
+        tooltipList.add(getPlateText(controlType.getName(), ChatFormatting.YELLOW).append(" ").append(loreComponent));
     }
 
     /**
      * Adds a blank line of lore to an Item.
-     * @param tooltip The tooltip list of the Item.
+     * @param tooltipList The tooltip list of the Item.
      */
-    public static void addBlankLine (List<Component> tooltip) {
-        tooltip.add(new TextComponent(""));
+    public static void addBlankLine(List<Component> tooltipList) {
+        tooltipList.add(new TextComponent(""));
     }
 
     /**
      * @param valueKey The key used to translate the string.
-     * @param format The color used in the middle.
+     * @param format   The color used in the middle.
      * @return A String with surrounding brackets and color in the middle.
      */
-    public static MutableComponent getPlateText (String valueKey, ChatFormatting format) {
+    public static MutableComponent getPlateText(String valueKey, ChatFormatting format) {
         return new TextComponent(ChatFormatting.GRAY + "[").append(new TranslatableComponent(valueKey).withStyle(format)).append(ChatFormatting.GRAY + "]");
     }
 

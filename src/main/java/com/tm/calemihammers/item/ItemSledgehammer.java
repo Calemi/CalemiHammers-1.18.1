@@ -57,8 +57,9 @@ public class ItemSledgehammer extends DiggerItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipList, TooltipFlag advanced) {
-        LoreHelper.addInformationLore(tooltipList, new TranslatableComponent("ch.lore.sledgehammer"), true);
-        LoreHelper.addControlsLore(tooltipList,  new TranslatableComponent("ch.lore.sledgehammer.use"), LoreHelper.ControlType.USE, true);
+        LoreHelper.addInformationLoreFirst(tooltipList, new TranslatableComponent("ch.lore.sledgehammer.1"));
+        LoreHelper.addInformationLore(tooltipList, new TranslatableComponent("ch.lore.sledgehammer.2"));
+        LoreHelper.addControlsLoreFirst(tooltipList,  new TranslatableComponent("ch.lore.sledgehammer.use"), LoreHelper.ControlType.USE);
         LoreHelper.addControlsLore(tooltipList,  new TranslatableComponent("ch.lore.sledgehammer.sneak-use"), LoreHelper.ControlType.SNEAK_USE);
         LoreHelper.addControlsLore(tooltipList,  new TranslatableComponent("ch.lore.sledgehammer.release-use"), LoreHelper.ControlType.RELEASE_USE);
 
