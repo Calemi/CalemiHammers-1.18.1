@@ -9,7 +9,7 @@ public class CHConfig {
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
 
-    public static final CategoryServer server = new CategoryServer(CLIENT_BUILDER);
+    public static final CategoryServer server = new CategoryServer(SERVER_BUILDER);
 
     public static void init() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CLIENT_BUILDER.build());

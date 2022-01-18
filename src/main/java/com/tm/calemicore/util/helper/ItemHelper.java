@@ -2,6 +2,9 @@ package com.tm.calemicore.util.helper;
 
 import com.tm.calemicore.util.Location;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -16,13 +19,40 @@ public class ItemHelper {
      * @param stack The ItemStack to get the NBT of.
      * @return The NBT tag of the given ItemStack.
      */
-    public static CompoundTag getNBT (ItemStack stack) {
+    public static CompoundTag getNBT(ItemStack stack) {
 
         if (stack.getTag() == null) {
             stack.setTag(new CompoundTag());
         }
 
         return stack.getTag();
+    }
+
+    /**
+     * @param count The count to use.
+     * @return A message of a number counted by stacks.
+     */
+    public static MutableComponent countByStacks(int count) {
+        int remainder = (count % 64);
+
+        MutableComponent msg = new TextComponent(StringHelper.insertCommas(count));
+        msg.append(" ");
+        msg.append(new TranslatableComponent("itemhelper.blocks"));
+
+        if (count > 64) {
+            msg.append(" (" + ((int) Math.floor((float) count / 64)));
+            msg.append(" ");
+            msg.append(new TranslatableComponent("itemhelper.stacks"));
+
+            if (remainder > 0) {
+                msg.append(" + " + remainder + " ");
+                msg.append(new TranslatableComponent("itemhelper.blocks"));
+            }
+
+            msg.append(")");
+        }
+
+        return msg;
     }
 
     /**

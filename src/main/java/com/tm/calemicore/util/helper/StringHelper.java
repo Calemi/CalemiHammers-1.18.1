@@ -1,5 +1,7 @@
 package com.tm.calemicore.util.helper;
 
+import java.text.DecimalFormat;
+
 /**
  * Use this class to help format strings.
  */
@@ -12,5 +14,18 @@ public class StringHelper {
      */
     public static String boxString(String str) {
         return "[" + str + "]";
+    }
+
+    /**
+     * @param amount The number to insert commas in.
+     * @return A number with commas (like 1,000,000)
+     */
+    public static String insertCommas(int amount) {
+
+        String number = String.valueOf(amount);
+        double amountD = Double.parseDouble(number);
+        DecimalFormat formatter = new DecimalFormat("#,###");
+
+        return formatter.format(amountD);
     }
 }

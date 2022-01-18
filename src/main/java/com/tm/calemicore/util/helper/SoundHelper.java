@@ -79,19 +79,17 @@ public class SoundHelper {
      * Players a Block's placing sound at a Location.
      * @param location The Location to play the sound at.
      * @param state The BlockState of the placed Block.
-     * @param player The Player who placed the Block.
      */
-    public static void playBlockPlace(Location location, BlockState state, Player player) {
-        player.getLevel().playSound(player, location.getBlockPos(), state.getSoundType(player.getLevel(), location.getBlockPos(), player).getPlaceSound(), SoundSource.BLOCKS, 1F, 1F);
+    public static void playBlockPlace(Location location, BlockState state) {
+        playAtLocation(location, state.getSoundType(location.level, location.getBlockPos(), null).getPlaceSound(), SoundSource.BLOCKS, 1F, 1F);
     }
 
     /**
      * Players a Block's break sound at a Location.
      * @param location The Location to play the sound at.
      * @param state The BlockState of the broke Block.
-     * @param player The Player who broke the Block.
      */
-    public static void playBlockBreak(Location location, BlockState state, Player player) {
-        player.getLevel().playSound(player, location.getBlockPos(), state.getSoundType(player.getLevel(), location.getBlockPos(), player).getBreakSound(), SoundSource.BLOCKS, 1F, 1F);
+    public static void playBlockBreak(Location location, BlockState state) {
+        playAtLocation(location, state.getSoundType(location.level, location.getBlockPos(), null).getBreakSound(), SoundSource.BLOCKS, 1F, 1F);
     }
 }

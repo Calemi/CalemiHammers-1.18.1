@@ -9,12 +9,14 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.common.util.FakePlayer;
@@ -177,6 +179,13 @@ public class Location {
     }
 
     /**
+     * @return A centered Vector at the Location.
+     */
+    public Vec3 getVector() {
+        return new Vec3(x + 0.5D, y + 0.5D, z + 0.5D);
+    }
+
+    /**
      * Sets the Block at the location.
      * @param block The new Block.
      */
@@ -204,6 +213,14 @@ public class Location {
     }
 
     /**
+     * Sets the Block at the location.
+     * @param context The context.
+     */
+    public void setBlock(BlockPlaceContext context) {
+        setBlock(getBlock().getStateForPlacement(context));
+    }
+
+    /**
      * Sets the Block at the location to Air.
      */
     public void setBlockToAir() {
@@ -225,7 +242,7 @@ public class Location {
             ((ServerPlayer) breaker).gameMode.destroyBlock(blockPos);
         }
 
-        SoundHelper.playBlockBreak(this, getBlockState(), breaker);
+        SoundHelper.playBlockBreak(this, getBlockState());
     }
 
     /**

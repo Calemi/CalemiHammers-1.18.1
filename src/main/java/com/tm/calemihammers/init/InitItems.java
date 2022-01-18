@@ -26,21 +26,21 @@ public class InitItems {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-    public static final RegistryObject<Item> KNOB_WOOD = ITEMS.register("knob_wood", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_STONE = ITEMS.register("knob_stone", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_IRON = ITEMS.register("knob_iron", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_GOLD = ITEMS.register("knob_gold", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_DIAMOND = ITEMS.register("knob_diamond", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_NETHERITE = ITEMS.register("knob_netherite", ItemKnob::new);
-    public static final RegistryObject<Item> KNOB_STARLIGHT = ITEMS.register("knob_starlight", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_WOOD =              regItem("knob_wood", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_STONE =             regItem("knob_stone", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_IRON =              regItem("knob_iron", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_GOLD =              regItem("knob_gold", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_DIAMOND =           regItem("knob_diamond", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_NETHERITE =         regItem("knob_netherite", ItemKnob::new);
+    public static final RegistryObject<Item> KNOB_STARLIGHT =         regItem("knob_starlight", ItemKnob::new);
 
-    public static final RegistryObject<Item> SLEDGEHAMMER_WOOD = ITEMS.register("sledgehammer_wood", () -> new ItemSledgehammer(SledgehammerTiers.WOOD));
-    public static final RegistryObject<Item> SLEDGEHAMMER_STONE = ITEMS.register("sledgehammer_stone", () -> new ItemSledgehammer(SledgehammerTiers.STONE));
-    public static final RegistryObject<Item> SLEDGEHAMMER_IRON = ITEMS.register("sledgehammer_iron", () -> new ItemSledgehammer(SledgehammerTiers.IRON));
-    public static final RegistryObject<Item> SLEDGEHAMMER_GOLD = ITEMS.register("sledgehammer_gold", () -> new ItemSledgehammer(SledgehammerTiers.GOLD));
-    public static final RegistryObject<Item> SLEDGEHAMMER_DIAMOND = ITEMS.register("sledgehammer_diamond", () -> new ItemSledgehammer(SledgehammerTiers.DIAMOND));
-    public static final RegistryObject<Item> SLEDGEHAMMER_NETHERITE = ITEMS.register("sledgehammer_netherite", () -> new ItemSledgehammer(SledgehammerTiers.NETHERITE));
-    public static final RegistryObject<Item> SLEDGEHAMMER_STARLIGHT = ITEMS.register("sledgehammer_starlight", () -> new ItemSledgehammer(SledgehammerTiers.STARLIGHT));
+    public static final RegistryObject<Item> SLEDGEHAMMER_WOOD =      regItem("sledgehammer_wood", () -> new ItemSledgehammer(SledgehammerTiers.WOOD));
+    public static final RegistryObject<Item> SLEDGEHAMMER_STONE =     regItem("sledgehammer_stone", () -> new ItemSledgehammer(SledgehammerTiers.STONE));
+    public static final RegistryObject<Item> SLEDGEHAMMER_IRON =      regItem("sledgehammer_iron", () -> new ItemSledgehammer(SledgehammerTiers.IRON));
+    public static final RegistryObject<Item> SLEDGEHAMMER_GOLD =      regItem("sledgehammer_gold", () -> new ItemSledgehammer(SledgehammerTiers.GOLD));
+    public static final RegistryObject<Item> SLEDGEHAMMER_DIAMOND =   regItem("sledgehammer_diamond", () -> new ItemSledgehammer(SledgehammerTiers.DIAMOND));
+    public static final RegistryObject<Item> SLEDGEHAMMER_NETHERITE = regItem("sledgehammer_netherite", () -> new ItemSledgehammer(SledgehammerTiers.NETHERITE));
+    public static final RegistryObject<Item> SLEDGEHAMMER_STARLIGHT = regItem("sledgehammer_starlight", () -> new ItemSledgehammer(SledgehammerTiers.STARLIGHT));
 
     /**
      * Used to register an Item.
