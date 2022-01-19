@@ -1,4 +1,4 @@
-package com.tm.calemicore.util;
+package com.tm.calemicore.util.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;

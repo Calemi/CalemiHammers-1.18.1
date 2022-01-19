@@ -1,4 +1,4 @@
-package com.tm.calemicore.util;
+package com.tm.calemicore.util.screen;
 
 public class ScreenRect {
 

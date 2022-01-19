@@ -2,6 +2,8 @@ package com.tm.calemicore.util.helper;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.tm.calemicore.util.screen.ScreenRect;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
@@ -9,13 +11,54 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ScreenHelper {
 
     private static final int TEXTURE_SIZE = 256;
     private static final Minecraft mc = Minecraft.getInstance();
 
-    public static void bindGuiTextures (ResourceLocation textureLocation) {
+    public static void bindGuiTexture(ResourceLocation textureLocation) {
         RenderSystem.setShaderTexture(0, textureLocation);
+    }
+
+    public static void drawHoveringTextBox (PoseStack poseStack, ResourceLocation textureLocation, int mouseX, int mouseY, int zLevel, ScreenRect rect, TranslatableComponent... text) {
+
+        if (rect.contains(mouseX, mouseY)) {
+            drawTextBox(poseStack, textureLocation, mouseX + 8, mouseY - 10, 50, false, text);
+        }
+    }
+
+    public static void drawTextBox(PoseStack poseStack, ResourceLocation textureLocation, int x, int y, int zLevel, boolean centeredString, TranslatableComponent... text) {
+
+        poseStack.pushPose();
+        poseStack.translate(0, 0, zLevel);
+
+        int maxLength = mc.font.width(text[0]);
+
+        List<TranslatableComponent> textToRender = new ArrayList<>(Arrays.asList(text));
+
+        for (TranslatableComponent msg : textToRender) {
+
+            if (mc.font.width(msg) > maxLength) {
+                maxLength = mc.font.width(msg);
+            }
+        }
+
+        bindGuiTexture(textureLocation);
+        drawCappedRect(poseStack, x + (centeredString ? - maxLength / 2 : 0), y, 0, 0, zLevel, maxLength + 5, 13 + ((textToRender.size() - 1) * 9), 512, 512);
+
+        poseStack.translate(0, 0, 100);
+        for (int i = 0; i < textToRender.size(); i++) {
+
+            TranslatableComponent msg = textToRender.get(i);
+            mc.font.draw(poseStack, msg.withStyle(ChatFormatting.WHITE), x + 3 + (centeredString ? -(int)(mc.font.width(msg.getString()) / 2) : 0), y + 3 + (i * 9), 0xFFFFFF);
+        }
+
+        poseStack.translate(0, 0, 0);
+        poseStack.popPose();
     }
 
     public static void drawCappedRect (PoseStack poseStack, int x, int y, int u, int v, int zLevel, int width, int height, int maxWidth, int maxHeight) {

@@ -215,9 +215,10 @@ public class Location {
     /**
      * Sets the Block at the location.
      * @param context The context.
+     * @param block The new Block.
      */
-    public void setBlock(BlockPlaceContext context) {
-        setBlock(getBlock().getStateForPlacement(context));
+    public void setBlock(BlockPlaceContext context, Block block) {
+        setBlock(block.getStateForPlacement(context));
     }
 
     /**

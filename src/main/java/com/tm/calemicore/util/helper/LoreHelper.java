@@ -23,9 +23,8 @@ public class LoreHelper {
     public static void addInformationLoreFirst(List<Component> tooltipList, MutableComponent loreComponent) {
 
         if (!addInformationLore(tooltipList, loreComponent)) {
-            tooltipList.add(loreComponent.withStyle(ChatFormatting.GRAY));
-        } else
             tooltipList.add(getPlateText("lore.key.shift", ChatFormatting.AQUA).append(" ").append(new TranslatableComponent("lore.info").withStyle(ChatFormatting.GRAY)));
+        }
     }
 
     /**
@@ -90,7 +89,7 @@ public class LoreHelper {
      * @param tooltipList The tooltip list of the Item.
      */
     public static void addBlankLine(List<Component> tooltipList) {
-        tooltipList.add(new TextComponent(""));
+        tooltipList.add(new TextComponent("   "));
     }
 
     /**
