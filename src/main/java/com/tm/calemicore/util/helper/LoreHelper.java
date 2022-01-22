@@ -105,12 +105,11 @@ public class LoreHelper {
 
         USE("use"),
         USE_OPEN_HAND("use-open-hand"),
-        SNEAK_USE("sneak-use"),
-        SNEAK_USE_BOOK("sneak-use-link-book"),
-        SNEAK_BREAK_BLOCK("sneak-break-block"),
         RELEASE_USE("release-use"),
+        SNEAK_USE("sneak-use"),
         LEFT_CLICK_BLOCK("left-click-block"),
-        SNEAK_LEFT_CLICK_BLOCK("sneak-left-click-block");
+        SNEAK_LEFT_CLICK_BLOCK("sneak-left-click-block"),
+        SNEAK_BREAK_BLOCK("sneak-break-block");
 
         private final String key;
 

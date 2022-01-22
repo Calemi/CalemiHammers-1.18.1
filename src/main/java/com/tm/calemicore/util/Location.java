@@ -303,7 +303,7 @@ public class Location {
     public static Location readFromNBT(Level level, CompoundTag tag) {
 
         //Checks if the tag is missing a crucial value. If so, doesn't read the Location.
-        if (!tag.contains("locX") || !tag.contains("locX") || !tag.contains("locZ")) {
+        if (!tag.contains("locX") || !tag.contains("locY") || !tag.contains("locZ")) {
             return null;
         }
 
@@ -319,7 +319,7 @@ public class Location {
      * @param tag The tag to store the Location.
      */
     public void writeToNBT(CompoundTag tag) {
-        tag.putInt("locX", z);
+        tag.putInt("locX", x);
         tag.putInt("locY", y);
         tag.putInt("locZ", z);
     }

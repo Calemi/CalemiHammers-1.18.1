@@ -57,10 +57,11 @@ public class UnitMessenger {
 
     /**
      * @param messageKey The message key.
+     * @param args The arguments if needed.
      * @return The message component with the prefix already included.
      */
-    public MutableComponent getMessage(String messageKey) {
-        return new TranslatableComponent("unit." + unitNameKey + ".msg." + messageKey);
+    public MutableComponent getMessage(String messageKey, Object... args) {
+        return new TranslatableComponent("unit." + unitNameKey + ".msg." + messageKey, args);
     }
 
     /**

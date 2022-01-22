@@ -16,19 +16,6 @@ import net.minecraft.world.level.Level;
 public class ItemHelper {
 
     /**
-     * @param stack The ItemStack to get the NBT of.
-     * @return The NBT tag of the given ItemStack.
-     */
-    public static CompoundTag getNBT(ItemStack stack) {
-
-        if (stack.getTag() == null) {
-            stack.setTag(new CompoundTag());
-        }
-
-        return stack.getTag();
-    }
-
-    /**
      * @param count The count to use.
      * @return A message of a number counted by stacks.
      */

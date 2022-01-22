@@ -33,7 +33,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                calemihammers {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -45,7 +45,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                calemihammers {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -58,7 +58,7 @@ minecraft {
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                calemihammers {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }

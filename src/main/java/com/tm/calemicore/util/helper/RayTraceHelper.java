@@ -26,7 +26,7 @@ public class RayTraceHelper {
      * @param level The Level.
      * @param player The Player.
      * @param maxDistance The max distance to search.
-     * @return The Block the Player is looking at.
+     * @return The Block the Player is looking at. Returns null if nothing is found.
      */
     public static BlockTrace rayTraceBlock(Level level, Player player, int maxDistance) {
 
@@ -59,7 +59,7 @@ public class RayTraceHelper {
      * @param level The Level.
      * @param player The Player.
      * @param maxDistance The max distance to search.
-     * @return The Entity the Player is looking at.
+     * @return The Entity the Player is looking at. Returns null if nothing is found.
      */
     public static Entity rayTraceEntity(Level level, Player player, int maxDistance) {
 
