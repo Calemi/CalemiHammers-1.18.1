@@ -13,6 +13,13 @@ description='''
     '''
 
 [[dependencies.calemihammers]]
+modId="calemicore"
+mandatory=true
+versionRange="1.0.0"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.calemihammers]]
     modId="forge"
     mandatory=true
     versionRange="[39.0.9,)"

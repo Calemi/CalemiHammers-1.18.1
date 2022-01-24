@@ -47,7 +47,7 @@ public class SledgehammerChargeOverlayEvent {
                     int hammerIconWidth = 13;
                     int scaledChargeTime = MathHelper.scaleInt(player.getTicksUsingItem(), chargeTime, hammerIconWidth);
 
-                    ScreenHelper.bindGuiTextures(new ResourceLocation(CHReference.MOD_ID + ":textures/gui/gui_textures.png"));
+                    ScreenHelper.bindGuiTexture(new ResourceLocation(CHReference.MOD_ID + ":textures/gui/gui_textures.png"));
 
                     //If the Sledgehammer is charging, render the loading charge overlay.
                     if (player.getTicksUsingItem() < chargeTime) {
