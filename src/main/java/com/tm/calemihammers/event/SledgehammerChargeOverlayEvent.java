@@ -1,7 +1,9 @@
 package com.tm.calemihammers.event;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.tm.calemicore.util.helper.MathHelper;
 import com.tm.calemicore.util.helper.ScreenHelper;
+import com.tm.calemicore.util.screen.ScreenRect;
 import com.tm.calemihammers.item.ItemSledgehammer;
 import com.tm.calemihammers.main.CHReference;
 import net.minecraft.client.Minecraft;
@@ -47,20 +49,19 @@ public class SledgehammerChargeOverlayEvent {
                     int hammerIconWidth = 13;
                     int scaledChargeTime = MathHelper.scaleInt(player.getTicksUsingItem(), chargeTime, hammerIconWidth);
 
-                    ScreenHelper.bindGuiTexture(new ResourceLocation(CHReference.MOD_ID + ":textures/gui/gui_textures.png"));
+                    RenderSystem.setShaderTexture(0, new ResourceLocation(CHReference.MOD_ID + ":textures/gui/hammer_overlay.png"));
 
                     //If the Sledgehammer is charging, render the loading charge overlay.
                     if (player.getTicksUsingItem() < chargeTime) {
-
-                        ScreenHelper.drawRect(event.getMatrixStack(),midX - 7, midY - 11, 0, 0, 0, hammerIconWidth, 4);
-                        ScreenHelper.drawRect(event.getMatrixStack(), midX - 7, midY - 11, hammerIconWidth, 0, 5, scaledChargeTime, 4);
+                        ScreenHelper.drawRect(event.getMatrixStack(), 0, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
+                        ScreenHelper.drawRect(event.getMatrixStack(), hammerIconWidth, 0, new ScreenRect(midX - 7, midY - 11, scaledChargeTime, 4), 0);
                     }
 
                     //If the Sledgehammer is ready, render the flashing ready overlay.
                     else {
 
                         if (level.getGameTime() % 5 > 1) {
-                            ScreenHelper.drawRect(event.getMatrixStack(), midX - 7, midY - 11, hammerIconWidth * 2, 0, 10, hammerIconWidth, 4);
+                            ScreenHelper.drawRect(event.getMatrixStack(), hammerIconWidth * 2, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
                         }
                     }
                 }
