@@ -53,15 +53,15 @@ public class SledgehammerChargeOverlayEvent {
 
                     //If the Sledgehammer is charging, render the loading charge overlay.
                     if (player.getTicksUsingItem() < chargeTime) {
-                        ScreenHelper.drawRect(event.getMatrixStack(), 0, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
-                        ScreenHelper.drawRect(event.getMatrixStack(), hammerIconWidth, 0, new ScreenRect(midX - 7, midY - 11, scaledChargeTime, 4), 0);
+                        ScreenHelper.drawRect(0, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
+                        ScreenHelper.drawRect(hammerIconWidth, 0, new ScreenRect(midX - 7, midY - 11, scaledChargeTime, 4), 0);
                     }
 
                     //If the Sledgehammer is ready, render the flashing ready overlay.
                     else {
 
                         if (level.getGameTime() % 5 > 1) {
-                            ScreenHelper.drawRect(event.getMatrixStack(), hammerIconWidth * 2, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
+                            ScreenHelper.drawRect(hammerIconWidth * 2, 0, new ScreenRect(midX - 7, midY - 11, hammerIconWidth, 4), 0);
                         }
                     }
                 }

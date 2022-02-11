@@ -8,7 +8,9 @@ import com.tm.calemicore.util.helper.LogHelper;
 import com.tm.calemicore.util.helper.LoreHelper;
 import com.tm.calemicore.util.helper.RayTraceHelper;
 import com.tm.calemicore.util.helper.WorldEditHelper;
+import com.tm.calemicore.util.helper.shape.ShapeFlatCube;
 import com.tm.calemihammers.config.CHConfig;
+import com.tm.calemihammers.init.InitEnchantments;
 import com.tm.calemihammers.init.InitItems;
 import com.tm.calemihammers.main.CHReference;
 import com.tm.calemihammers.main.CalemiHammers;
@@ -140,11 +142,9 @@ public class ItemSledgehammer extends DiggerItem {
         //Checks if the starting Location can be mined.
         if (canBreakBlock(player, startLocation)) {
 
-            BlockState state = startLocation.getBlockState();
-
             //Start a scan of blocks that equal the starting Location's Block.
-            BlockScanner scan = new BlockScanner(startLocation, state, CHConfig.server.maxVeinMineSize.get());
-            scan.startVeinScan();
+            BlockScanner scan = new BlockScanner(startLocation, startLocation.getBlock().defaultBlockState(), CHConfig.server.maxVeinMineSize.get(), true);
+            scan.startRadiusScan();
 
             int damage = getDamage(heldStack);
 
@@ -159,7 +159,6 @@ public class ItemSledgehammer extends DiggerItem {
                 }
 
                 nextLocation.breakBlock(player);
-                damageHammer(heldStack, player);
                 damage++;
             }
         }
@@ -171,9 +170,9 @@ public class ItemSledgehammer extends DiggerItem {
      */
     private void excavateBlocks (Level worldIn, ItemStack heldStack, Player player, Location location, Direction face) {
 
-        int radius = 1;//EnchantmentHelper.getEnchantmentLevel(InitEnchantments.CRUSHING.get(), heldStack) + 1;
+        int radius = EnchantmentHelper.getEnchantmentLevel(InitEnchantments.CRUSHING.get(), player) + 1;
 
-        ArrayList<Location> locations = WorldEditHelper.selectFlatCubeFromFace(location, face, radius);
+        ArrayList<Location> locations = WorldEditHelper.selectShape(new ShapeFlatCube(location, face, radius));
 
         int damage = getDamage(heldStack);
 
@@ -190,7 +189,6 @@ public class ItemSledgehammer extends DiggerItem {
             //Checks if the next Location can be mined.
             if (canBreakBlock(player, nextLocation)) {
                 nextLocation.breakBlock(player);
-                damageHammer(heldStack, player);
                 damage++;
             }
         }
@@ -208,18 +206,13 @@ public class ItemSledgehammer extends DiggerItem {
      * Handles damaging when the Sledgehammer breaks a Block.
      */
     @Override
-    public boolean onBlockStartBreak(ItemStack stack, BlockPos pos, Player player) {
+    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity livingEntity) {
 
-        Location location = new Location(player.level, pos);
-
-        //Checks if on server & if the block has hardness.
-        if (!player.level.isClientSide() && location.getBlockState().getDestroySpeed(player.level, pos) != 0.0F) {
-
-            //If not a Starlight Sledgehammer, damage the item.
-            damageHammer(stack, player);
+        if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F) {
+            damageHammer(stack, livingEntity);
         }
 
-        return super.onBlockStartBreak(stack, pos, player);
+        return true;
     }
 
     /**
