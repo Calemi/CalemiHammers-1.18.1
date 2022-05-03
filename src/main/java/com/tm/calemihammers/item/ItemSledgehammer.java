@@ -22,7 +22,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -34,6 +33,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeHooks;
+
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
@@ -218,8 +218,7 @@ public class ItemSledgehammer extends DiggerItem {
     /**
      * Handles damaging when the Sledgehammer hits an Entity.
      */
-    @Override
-    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity target) {
+    public boolean hurtEnemy(ItemStack stack, LivingEntity player, LivingEntity target) {
         damageHammer(stack, player);
         return true;
     }

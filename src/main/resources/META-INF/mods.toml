@@ -4,7 +4,7 @@ license="All rights reserved"
 
 [[mods]]
 modId="calemihammers"
-version="1.0.0"
+version="1.0.2"
 displayName="Calemi's Sledgehammers"
 authors="Calemi"
 credits="Calemi - Programmer & Artist"
@@ -22,13 +22,13 @@ side="BOTH"
 [[dependencies.calemihammers]]
     modId="forge"
     mandatory=true
-    versionRange="[39.0.9,)"
+    versionRange="[40.1.2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.calemihammers]]
     modId="minecraft"
     mandatory=true
-    versionRange="1.18.1"
+    versionRange="1.18.2"
     ordering="NONE"
     side="BOTH"

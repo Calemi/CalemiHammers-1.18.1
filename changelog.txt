@@ -1,2 +1,10 @@
+[v1.0.2]
+-Fixed the max level of the Crushing enchantment. It is now 3.
+-Updated to minecraft version to 1.18.2
+-Updated forge version to 40.1.2
+
+[v1.0.1]
+-Fixed issue causing players not being able to join a server.
+
 [v1.0.0]
 -Initial Build
